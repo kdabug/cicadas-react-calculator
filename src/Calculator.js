@@ -1,30 +1,28 @@
 import React, { Component } from "react";
 
-import "./Calculator.css";
-
 class Calculator extends Component {
   constructor() {
     super();
 
     this.state = {
-      valueOne: "",
-      valueTwo: "",
-      total: ""
+      valueOne: 0,
+      valueTwo: 0,
+      total: 0
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.state);
+    const { name, value } = e.target;
+    this.setState((prevState, newState) => ({
+      [name]: value
+    }));
+    console.log(this.state);
+    let total = this.state.valueOne + this.state.valueTwo;
+    this.setState((prevState, newState) => ({
+      total
+    }));
   }
 
   render() {
@@ -34,11 +32,17 @@ class Calculator extends Component {
         <div className="add">
           <input
             type="text"
-            name={this.state.valueOne}
+            name={"valueOne"}
+            value={this.state.valueOne}
             onChange={this.handleChange}
           />
           <span>+</span>
-          <input type="text" />
+          <input
+            type="text"
+            onChange={this.handleChange}
+            name={"valueTwo"}
+            value={this.state.valueTwo}
+          />
           <span>=</span>
           <h3>{this.state.total}</h3>
         </div>
