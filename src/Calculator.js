@@ -11,6 +11,8 @@ class Calculator extends Component {
       valueTwo: "",
       total: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -29,13 +31,16 @@ class Calculator extends Component {
     return (
       <div className="container">
         <h1>Add with React!</h1>
-
         <div className="add">
-          <input type="text" />
+          <input
+            type="text"
+            name={this.state.valueOne}
+            onChange={this.handleChange}
+          />
           <span>+</span>
           <input type="text" />
           <span>=</span>
-          <h3>Addition results go here!</h3>
+          <h3>{this.state.total}</h3>
         </div>
       </div>
     );
