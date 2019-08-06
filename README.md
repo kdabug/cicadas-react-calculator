@@ -1,3 +1,7 @@
+# React Calculator
+
+WIP -> creating a calculator in react. What will it calculate? Who knows. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
